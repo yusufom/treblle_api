@@ -26,6 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
             firstname=validated_data['firstname'],
             lastname=validated_data['lastname'],
             security_answer=validated_data['security_answer'],
+            security_question=validated_data['security_question'],
         )
         return user
     

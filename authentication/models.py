@@ -8,11 +8,11 @@ import random
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, email, firstname, lastname, password=None, *args, **kwargs):
+    def create_user(self, email, firstname, lastname, security_question, security_answer, password=None, *args, **kwargs):
         if not all([firstname, lastname, password]):
             raise ValueError('Firstname, lastname and password are required.')
         account = generate_random_number_string()
-        user = self.model(email=self.normalize_email(email), firstname=firstname, lastname=lastname, account_number=account )
+        user = self.model(email=self.normalize_email(email), firstname=firstname, lastname=lastname, account_number=account, security_question=security_question, security_answer=security_answer)
         user.set_password(password)
         user.username = user.generate_uniquie_username()
         user.save()
