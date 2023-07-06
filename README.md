@@ -27,3 +27,8 @@
 
 ## Run the project
 ### python manage.py runserver
+
+
+## Navigate to docs url
+### http://127.0.0.1:8000/docs/
+### http://127.0.0.1:8000/
