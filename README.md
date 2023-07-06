@@ -36,4 +36,16 @@ python manage.py migrate
 ```
 http://127.0.0.1:8000/docs/
 http://127.0.0.1:8000/
+
+```
+
+
+
+## security question options
+
+```(
+        ('What is your favorite food?', 'What is your favorite food?'),
+        ('What is the name of your childhood friend?', 'What is the name of your childhood friend?'),
+        ('What is the name of your first pet?', 'What is the name of your first pet?'),
+    )
 ```
