@@ -209,13 +209,17 @@ class TransferView(generics.GenericAPIView):
 
       else:
         with transaction.atomic():
-            Transaction.objects.create(user=user, receiver=receiver, transaction_type="T", account=account, amount=amount_withdrawn)
+          try:
             receiver = User.objects.get(account_number = account_number)
+            print(account_number)
             receiver_account = Account.objects.get(user=receiver)
             receiver_account.balance += amount_withdrawn
             account.balance -= amount_withdrawn
+            Transaction.objects.create(user=user, receiver=receiver, transaction_type="T", account=account, amount=amount_withdrawn)
             receiver.save()
             account.save()
+          except User.DoesNotExist:
+            return Response({"message": "Account number is wrong"})
 
 
 
