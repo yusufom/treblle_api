@@ -58,7 +58,7 @@ class LoginView(generics.CreateAPIView):
         password = serializer.validated_data['password']
 
         if email and password:
-            user = authenticate(request, email=email, password=password)
+            user = authenticate(request, username=email, password=password)
             if not user:
                 f_limit = get_failure_limit(request, credentials={'username': email, 'ip': get_ip(request)})
                 f_attempt = axes_handler.get_failures(request, credentials={'username': email, 'ip': get_ip(request)})
