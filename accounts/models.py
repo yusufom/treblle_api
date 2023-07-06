@@ -20,6 +20,7 @@ class Transaction(models.Model):
         ('T', 'T'),
     )
   user = models.ForeignKey(User, on_delete=models.CASCADE)
+  receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver', null=True, blank=True)
   account = models.ForeignKey(Account, on_delete=models.CASCADE)
   transaction_type = models.CharField(max_length=255, blank=True, null=True, choices=type)
   amount = models.PositiveBigIntegerField()
@@ -32,7 +33,8 @@ class Transaction(models.Model):
 
   def deposit(self):
     with transaction.atomic():
-      user_account = Account.objects.get(user=self.user, id=self.account.id)
+      user_account = Account.objects.get(user=self.user)
+      print('yeah')
       if user_account:
         user_account.balance += int(self.amount)
         self.balance = user_account.balance
@@ -42,7 +44,7 @@ class Transaction(models.Model):
 
   def withdraw(self):
     with transaction.atomic():
-      user_account = Account.objects.get(user=self.user, id=self.account.id)
+      user_account = Account.objects.get(user=self.user)
       if user_account:
         user_account.balance -= int(self.amount)
         self.balance = user_account.balance
@@ -55,3 +57,6 @@ class Transaction(models.Model):
     elif self.transaction_type == 'D':
       self.deposit()
     super(Transaction, self).save(*args, **kwargs)
+
+# a52ddaeb-1597-422e-b5c2-2c0ccb01f8ca
+# 4312775131
