@@ -12,8 +12,7 @@
 ```source env/bin/activate (linux)```
 
 ## Install requirements
-```pip install -r requirements.txt
-```
+```pip install -r requirements.txt```
 
 ## Create and add .env info at root folder
 ``` 
