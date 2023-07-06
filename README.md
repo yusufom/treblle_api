@@ -6,7 +6,7 @@
 ### git pull https://github.com/yusufom/treblle_api.git
 
 ## Create virtualenv
-### virtualenv env
+``` virtualenv env 
 
 ## Activate virtualenv
 ### source env/bin/activate (linux)
