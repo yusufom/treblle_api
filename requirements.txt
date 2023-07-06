@@ -21,11 +21,14 @@ packaging==23.1
 pluggy==1.2.0
 PyJWT==1.7.1
 pytest==7.4.0
+python-dotenv==1.0.0
 pytz==2023.3
 requests==2.31.0
 rest-api-payload==0.0.7
 sqlparse==0.4.4
 tomli==2.0.1
+treblle==0.14
 typing_extensions==4.7.1
 uritemplate==4.1.1
 urllib3==2.0.3
+whitenoise==6.5.0
